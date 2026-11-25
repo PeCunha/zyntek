@@ -41,6 +41,10 @@
   --space-lg: 2.5rem;
   --enter-duration: 0.9s;
   --enter-ease: ease-out;
+  --glass-blur: 14px;
+  --glass-border: rgba(75, 205, 176, 0.32);
+  --glass-shadow: 0 24px 60px rgba(0, 0, 0, 0.34), 0 0 34px rgba(8, 127, 109, 0.16);
+  --mark-fill: rgba(75, 205, 176, 0.24);
 }
 
 * {
@@ -324,6 +328,7 @@ button {
   border-radius: 50%;
   background: rgba(14, 26, 23, 0.75);
   backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
   border: 1px solid rgba(255, 255, 255, 0.1);
   display: flex;
   align-items: center;
@@ -460,14 +465,75 @@ button {
   max-width: 58rem;
 }
 
+@media (min-width: 901px) {
+  .slide[data-index="1"] .cover-photo {
+    position: absolute;
+    inset: 0 auto 0 0;
+    width: 45vw;
+    height: 100%;
+    z-index: 1;
+    overflow: hidden;
+    pointer-events: none;
+  }
+
+  .slide[data-index="1"] .cover-photo-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+    filter: brightness(0.78) saturate(0.92);
+  }
+
+  .slide[data-index="1"] .cover-photo::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background:
+      linear-gradient(90deg, rgba(6, 10, 9, 0.18), rgba(6, 10, 9, 0.62)),
+      linear-gradient(180deg, rgba(8, 127, 109, 0.12), transparent 62%);
+    pointer-events: none;
+  }
+
+  .slide[data-index="1"] .cover-photo::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    width: 1px;
+    background: linear-gradient(180deg, transparent, rgba(75, 205, 176, 0.35), transparent);
+    z-index: 2;
+  }
+
+  .slide[data-index="1"] .slide-content {
+    position: relative;
+    z-index: 2;
+    align-self: flex-end;
+    margin-inline: 0;
+    width: 55%;
+    max-width: none;
+    padding-left: 4vw;
+    justify-content: center;
+  }
+
+  .slide[data-index="1"] .hero-art {
+    display: none;
+  }
+}
+
 .geo-bg span {
   position: absolute;
   display: block;
   pointer-events: none;
   --geo-rotate: 0deg;
+  --geo-pulse-from: 0.36;
+  --geo-pulse-to: 0.6;
+  --geo-pulse-radius: 8px;
+  --geo-glow-from: 0.08;
+  --geo-glow-to: 0.22;
 }
 
-.geo-circle {
+.geo-bg .geo-circle {
   width: 260px;
   height: 260px;
   top: 11%;
@@ -475,51 +541,69 @@ button {
   border: 1px solid rgba(75, 205, 176, 0.32);
   border-radius: 50%;
   box-shadow: inset 0 0 45px rgba(56, 198, 165, 0.04);
+  --geo-pulse-radius: 12px;
   opacity: 0.5;
-  animation: geoFloat 18s ease-in-out infinite alternate;
+  animation:
+    geoFloat 18s ease-in-out infinite alternate,
+    geoPulse 5s ease-in-out infinite alternate;
 }
 
-.geo-square {
+.geo-bg .geo-square {
   width: 150px;
   height: 150px;
   top: 57%;
   right: 7%;
   border: 1px solid rgba(75, 205, 176, 0.26);
   --geo-rotate: 45deg;
+  --geo-pulse-radius: 9px;
   opacity: 0.5;
-  animation: geoSpin 48s linear infinite;
+  animation:
+    geoSpin 48s linear infinite,
+    geoPulse 5.4s ease-in-out infinite alternate;
 }
 
-.geo-triangle {
+.geo-bg .geo-triangle {
   width: 120px;
   height: 104px;
   top: 17%;
   right: 21%;
   background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 120 104'%3E%3Cpolygon points='60,4 116,100 4,100' fill='none' stroke='%234BCDB0' stroke-opacity='.38' stroke-width='1'/%3E%3C/svg%3E") no-repeat center / contain;
   opacity: 0.5;
-  animation: geoFloat 22s ease-in-out infinite alternate-reverse;
+  animation:
+    geoFloat 22s ease-in-out infinite alternate-reverse,
+    geoPulse 5.6s ease-in-out infinite alternate;
 }
 
-.geo-line {
+.geo-bg .geo-line {
   width: 340px;
   height: 1px;
   top: 74%;
   left: 17%;
   background: linear-gradient(90deg, transparent, rgba(75, 205, 176, 0.5), transparent);
   --geo-rotate: -24deg;
+  --geo-pulse-radius: 5px;
   opacity: 0.5;
-  animation: geoFloat 16s ease-in-out infinite alternate;
+  animation:
+    geoFloat 16s ease-in-out infinite alternate,
+    geoPulse 4.8s ease-in-out infinite alternate;
 }
 
-.geo-dots {
+.geo-bg .geo-dots {
   width: 90px;
   height: 90px;
   top: 28%;
   left: 77%;
   background-image: radial-gradient(rgba(75, 205, 176, 0.55) 1px, transparent 1px);
   background-size: 14px 14px;
+  --geo-pulse-from: 0.16;
+  --geo-pulse-to: 0.32;
+  --geo-pulse-radius: 6px;
+  --geo-glow-from: 0.04;
+  --geo-glow-to: 0.12;
   opacity: 0.22;
-  animation: geoFloat 20s ease-in-out infinite alternate-reverse;
+  animation:
+    geoFloat 20s ease-in-out infinite alternate-reverse,
+    geoPulse 5.2s ease-in-out infinite alternate;
 }
 
 .slide:nth-of-type(2n) .geo-circle {
@@ -571,6 +655,18 @@ button {
   }
 }
 
+@keyframes geoPulse {
+  from {
+    opacity: var(--geo-pulse-from, 0.36);
+    filter: drop-shadow(0 0 var(--geo-pulse-radius, 8px) rgba(56, 198, 165, var(--geo-glow-from, 0.08)));
+  }
+
+  to {
+    opacity: var(--geo-pulse-to, 0.6);
+    filter: drop-shadow(0 0 var(--geo-pulse-radius, 8px) rgba(87, 225, 194, var(--geo-glow-to, 0.22)));
+  }
+}
+
 @media (prefers-reduced-motion: reduce) {
   .geo-bg span {
     animation: none !important;
@@ -584,6 +680,18 @@ button {
 
   100% {
     transform: translateY(-20px) scale(1.04);
+  }
+}
+
+@keyframes orbPulse {
+  from {
+    opacity: var(--orb-pulse-from, 0.82);
+    filter: blur(1px) drop-shadow(0 0 12px rgba(56, 198, 165, var(--orb-glow-from, 0.08)));
+  }
+
+  to {
+    opacity: var(--orb-pulse-to, 1);
+    filter: blur(1px) drop-shadow(0 0 26px rgba(87, 225, 194, var(--orb-glow-to, 0.2)));
   }
 }
 
@@ -700,13 +808,20 @@ p {
 
 .orb {
   position: absolute !important;
+  z-index: 0 !important;
   border-radius: 50%;
   pointer-events: none;
   filter: blur(1px);
   background: radial-gradient(circle at 35% 35%, rgba(87, 225, 194, 0.28), rgba(8, 127, 109, 0.08) 50%, transparent 72%);
   border: 1px solid rgba(75, 205, 176, 0.15);
   box-shadow: inset 0 0 55px rgba(8, 127, 109, 0.15), 0 0 80px rgba(8, 127, 109, 0.1);
-  animation: floatOrb 8s ease-in-out infinite alternate;
+  --orb-pulse-from: 0.82;
+  --orb-pulse-to: 1;
+  --orb-glow-from: 0.08;
+  --orb-glow-to: 0.2;
+  animation:
+    floatOrb 8s ease-in-out infinite alternate,
+    orbPulse 5.4s ease-in-out infinite alternate;
 }
 
 .orb.one {
@@ -722,7 +837,9 @@ p {
   right: 22%;
   bottom: -90px;
   opacity: 0.5;
-  animation-duration: 10s;
+  --orb-pulse-from: 0.38;
+  --orb-pulse-to: 0.6;
+  animation-duration: 10s, 5.4s;
 }
 
 .pill {
@@ -793,7 +910,8 @@ p {
   gap: 2.5vw;
 }
 
-.slide[data-index="16"] .section-divider {
+.slide[data-index="16"] .section-divider,
+.slide[data-index="18"] .section-divider {
   align-self: stretch;
   width: 1px;
   min-height: 220px;
@@ -809,11 +927,13 @@ p {
 
 @media (max-width: 900px) {
   .slide[data-index="2"] .problem-layout,
-  .slide[data-index="16"] .two-col {
+  .slide[data-index="16"] .two-col,
+  .slide[data-index="18"] .two-col {
     grid-template-columns: 1fr;
   }
 
-  .slide[data-index="16"] .section-divider {
+  .slide[data-index="16"] .section-divider,
+  .slide[data-index="18"] .section-divider {
     width: 100%;
     height: 1px;
     min-height: 0;
@@ -1125,11 +1245,13 @@ p {
   width: clamp(115px, 15vh, 150px);
   aspect-ratio: 1;
   border-radius: 50%;
-  background: conic-gradient(var(--green-bright) var(--pct), rgba(255, 255, 255, 0.08) 0);
+  background:
+    radial-gradient(circle at 50% -10%, rgba(255, 255, 255, 0.18), transparent 42%),
+    conic-gradient(var(--green-bright) var(--pct), rgba(255, 255, 255, 0.08) 0);
   display: grid;
   place-items: center;
   position: relative;
-  box-shadow: 0 0 30px rgba(8, 127, 109, 0.25);
+  box-shadow: 0 0 34px rgba(8, 127, 109, 0.3), inset 0 0 0 1px rgba(255, 255, 255, 0.08);
 }
 
 .donut:before {
@@ -1139,6 +1261,7 @@ p {
   border-radius: 50%;
   background: #0B1412;
   border: 1px solid rgba(75, 205, 176, 0.2);
+  box-shadow: inset 0 0 18px rgba(8, 127, 109, 0.18);
 }
 
 .donut-core {
@@ -1214,16 +1337,29 @@ p {
   height: 10px;
   margin-top: 4px;
   border-radius: 999px;
-  background: rgba(255, 255, 255, 0.08);
+  background:
+    repeating-linear-gradient(90deg, transparent 0 calc(10% - 1px), rgba(255, 255, 255, 0.06) calc(10% - 1px) 10%),
+    rgba(255, 255, 255, 0.08);
+  box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.35);
   overflow: hidden;
 }
 
 .result-bar-track i {
   display: block;
+  position: relative;
   width: var(--pct);
   height: 100%;
   border-radius: inherit;
   background: linear-gradient(90deg, #087F6D, #4BCDAF);
+  box-shadow: 0 0 14px rgba(75, 205, 176, 0.35);
+}
+
+.result-bar-track i::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0.28), transparent 55%);
 }
 
 .result-bar p {
@@ -1235,8 +1371,9 @@ p {
 
 .chart-takeaway {
   margin-top: 4px;
-  padding-top: 8px;
+  padding: 8px 0 0 12px;
   border-top: 1px solid var(--panel-border);
+  border-left: 2px solid rgba(75, 205, 176, 0.55);
   font-size: 20px;
   color: var(--green-bright);
 }
@@ -1491,6 +1628,7 @@ p {
   border-radius: 16px;
   background: rgba(14, 26, 23, 0.78);
   backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
   width: max-content;
   max-width: 100%;
 }
@@ -2250,6 +2388,7 @@ p {
   border-radius: 20px;
   background: rgba(14, 26, 23, 0.8);
   backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
   border: 1px solid rgba(75, 205, 176, 0.35);
   box-shadow: 0 15px 50px rgba(0, 0, 0, 0.4), 0 0 40px rgba(8, 127, 109, 0.25);
   transition: transform 0.3s ease;
@@ -2367,6 +2506,7 @@ p {
   border: 1px solid rgba(255, 255, 255, 0.15);
   background: rgba(14, 26, 23, 0.8);
   backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
   color: var(--white);
   cursor: pointer;
   display: flex;
@@ -2549,6 +2689,7 @@ p {
   inset: 0;
   background: rgba(0, 0, 0, 0.7);
   backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
 }
 
 .shortcuts-dialog {
@@ -3221,6 +3362,10 @@ kbd {
   padding: 1.5rem;
 }
 
+.slide[data-index="4"] .professor-layout {
+  align-items: start;
+}
+
 .slide[data-index="4"] .research-duo .donut {
   width: clamp(150px, 20vh, 200px);
 }
@@ -3390,6 +3535,77 @@ kbd {
   margin-top: 0;
 }
 
+@media (min-width: 901px) {
+  .slide[data-index="2"] .problem-layout {
+    grid-template-columns: minmax(0, 0.78fr) minmax(0, 1.22fr);
+  }
+
+  .slide[data-index="3"] .persona-grid {
+    grid-template-columns:
+      minmax(0, 1.12fr)
+      minmax(0, 0.88fr)
+      minmax(0, 0.88fr)
+      minmax(0, 1.12fr);
+    align-items: start;
+  }
+
+  .slide[data-index="4"] .research-duo {
+    grid-template-columns: minmax(0, 1.3fr) minmax(0, 0.7fr);
+  }
+
+  .slide[data-index="8"] .solution-col {
+    grid-template-columns: minmax(0, 0.9fr) minmax(0, 1.1fr);
+  }
+
+  .slide[data-index="8"] .hero-capture .capture-frame {
+    aspect-ratio: 1186 / 676;
+  }
+
+  .slide[data-index="9"] .stack-row {
+    grid-template-columns:
+      minmax(0, 1.1fr)
+      minmax(0, 1.1fr)
+      minmax(0, 1.1fr)
+      minmax(0, 0.7fr);
+  }
+
+  .slide[data-index="9"] .compare {
+    grid-template-columns: minmax(0, 0.86fr) 40px minmax(0, 1.14fr);
+  }
+
+  .slide[data-index="16"] .two-col {
+    grid-template-columns: minmax(0, 1.06fr) 1px minmax(0, 0.94fr);
+  }
+
+  .slide[data-index="18"] .two-col {
+    grid-template-columns: minmax(0, 1.04fr) 1px minmax(0, 0.96fr);
+    gap: 16px;
+  }
+
+  .slide[data-index="19"] .two-col {
+    grid-template-columns: minmax(0, 0.82fr) minmax(0, 1.18fr);
+    gap: 10vw;
+    align-items: start;
+  }
+
+  .slide[data-index="19"] .two-col > div:first-child .delivery-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .slide[data-index="19"] .two-col > div:first-child .delivery-item:nth-child(3) {
+    grid-column: 1 / -1;
+  }
+
+  .slide[data-index="18"] .two-col > div:last-child {
+    min-width: 0;
+    margin-top: 2.5rem;
+  }
+
+  .slide[data-index="19"] .two-col > div:last-child {
+    margin-top: 2.5rem;
+  }
+}
+
 .pill-row,
 .tech-tags {
   gap: var(--space-xs);
@@ -3494,6 +3710,35 @@ kbd {
 .slide .diagnostic-list li:before,
 .slide .roadmap-item:before {
   box-shadow: 0 0 12px rgba(75, 205, 176, 0.7);
+}
+
+@supports ((backdrop-filter: blur(1px)) or (-webkit-backdrop-filter: blur(1px))) {
+  .slide .glass-surface {
+    background: linear-gradient(145deg, rgba(19, 39, 34, 0.8), rgba(8, 16, 14, 0.88));
+    border-color: var(--glass-border);
+    box-shadow: var(--glass-shadow);
+    backdrop-filter: blur(var(--glass-blur)) saturate(1.08);
+    -webkit-backdrop-filter: blur(var(--glass-blur)) saturate(1.08);
+  }
+
+  .slide .glass-surface:hover {
+    border-color: var(--panel-border-hover);
+    box-shadow: 0 28px 68px rgba(8, 127, 109, 0.22), 0 0 38px rgba(8, 127, 109, 0.2);
+  }
+
+  .slide[data-index="9"] .compare-panel.accent-panel.glass-surface {
+    background: linear-gradient(145deg, rgba(10, 83, 71, 0.72), rgba(8, 16, 14, 0.88));
+  }
+}
+
+.slide mark.soft-mark {
+  color: inherit;
+  background: linear-gradient(transparent 62%, var(--mark-fill) 62%);
+  border-radius: 4px;
+  padding: 0 0.12em;
+  box-decoration-break: clone;
+  -webkit-box-decoration-break: clone;
+  text-shadow: none;
 }
 
 @media (prefers-reduced-motion: reduce) {

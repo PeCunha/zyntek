@@ -14,7 +14,7 @@ const RESEARCH = {
 };
 
 const CAPTURES = {
-  slide6Main: ''
+  slide6Main: 'imagens/tela-demonstrativa.png'
 };
 
 const PRINTS = {
