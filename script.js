@@ -20,6 +20,7 @@ const CAPTURES = {
 const PRINTS = {
   funcao1a: 'imagens/telalogin.jpeg',
   funcao1b: 'imagens/telaperfil.jpeg',
+  alunoPrint05: 'imagens/print-perfil-aluno-05.png',
   telaProfessor: 'imagens/prof-principal.png',
   telaAluno: 'imagens/aluno-principal.png',
   telaCoordenador: 'imagens/coordenador-principal.png',
@@ -27,6 +28,7 @@ const PRINTS = {
 };
 
 const VIDEOS = {
+  videoAtual: 'imagens/aluno-atualmente.mp4',
   videoProfessor: 'imagens/tela-professor.mp4',
   videoAluno: 'imagens/tela-aluno.mp4',
   videoCoordenador: 'imagens/tela-coordenador.mp4',
@@ -41,6 +43,7 @@ const SECTION_NAMES = [
   'ATO 1 · 30 PARTICIPANTES · PESQUISAS',
   'ATO 1 · DIAGNÓSTICO COM COORDENADOR E AQV',
   'ATO 1 · ENTREVISTAS E REQUISITOS',
+  'ATO 1 · BOLETIM PDF E FREQUÊNCIA',
   'ATO 2 · A SOLUÇÃO',
   'ATO 2 · FUNDAMENTAÇÃO TÉCNICA',
   'ATO 3 · DEMO · TELA DE LOGIN',
@@ -96,8 +99,14 @@ const STAGE_CUES = [
   {
     act: 'Ato 1 — O Problema',
     member: '2',
-    time: '02:30–03:30',
+    time: '02:30–03:15',
     cue: '“Requisitos funcionais e não funcionais definiram as prioridades do projeto.”'
+  },
+  {
+    act: 'Ato 1 — O Problema',
+    member: '2',
+    time: '03:15–03:30',
+    cue: '“O boletim é baixado em PDF; a frequência do aluno é consultada em outra tela.”'
   },
   {
     act: 'Ato 2 — A Solução e o Negócio',
@@ -219,6 +228,7 @@ document.addEventListener('DOMContentLoaded', () => {
   let researchFrames = [];
   let budgetFrame = null;
   let videoFrames = [];
+  let enteringTimer = null;
 
   const pad = (n) => String(n).padStart(2, '0');
 
@@ -266,7 +276,7 @@ document.addEventListener('DOMContentLoaded', () => {
     researchFrames = [];
 
     document.querySelectorAll('.result-bar-track i').forEach((bar) => {
-      const target = parseFloat(bar.style.getPropertyValue('--pct')) || 0;
+      const target = parseFloat(bar.dataset.pct || bar.style.getPropertyValue('--pct')) || 0;
       const readout = bar.closest('.result-bar')?.querySelector('.result-bar-head b');
       const finalText = readout?.dataset.final || readout?.textContent || '';
       if (readout) readout.dataset.final = finalText;
@@ -290,7 +300,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const finalCore = core?.dataset.final || core?.textContent || '';
 
     if (donut) {
-      const target = parseFloat(donut.style.getPropertyValue('--pct')) || 88.9;
+      const target = parseFloat(donut.dataset.pct || donut.style.getPropertyValue('--pct')) || 88.9;
       if (core) core.dataset.final = finalCore;
       donut.style.setProperty('--pct', '0%');
       const startTime = performance.now();
@@ -484,6 +494,7 @@ document.addEventListener('DOMContentLoaded', () => {
     slides.forEach((slide, i) => {
       const isActive = i === index;
       slide.classList.toggle('active', isActive);
+      slide.classList.remove('is-entering');
       slide.setAttribute('aria-hidden', String(!isActive));
     });
 
@@ -501,14 +512,18 @@ document.addEventListener('DOMContentLoaded', () => {
     syncVideos();
 
     const activeSlide = slides[index];
+    if (enteringTimer) clearTimeout(enteringTimer);
     if (activeSlide) {
-      activeSlide.classList.remove('is-entering');
       void activeSlide.offsetWidth;
       activeSlide.classList.add('is-entering');
+      enteringTimer = setTimeout(() => {
+        activeSlide.classList.remove('is-entering');
+        enteringTimer = null;
+      }, 2800);
     }
 
     if (index === 4) animateResearch();
-    if (index === 16) animateBudget();
+    if (index === 17) animateBudget();
   }
 
   function next() {
@@ -607,18 +622,19 @@ document.addEventListener('DOMContentLoaded', () => {
       closeHelp();
       toggleStageNotes(false);
     } else if (/^[0-9]$/.test(e.key)) {
-      if (digitBuffer === '1') {
+      if (digitBuffer === '1' || digitBuffer === '2') {
         clearTimeout(digitTimer);
+        const doubleDigit = parseInt(`${digitBuffer}${e.key}`, 10);
         digitBuffer = '';
-        const doubleDigit = parseInt(`1${e.key}`, 10);
         if (doubleDigit <= slides.length) goTo(doubleDigit - 1);
         return;
       }
-      if (e.key === '1') {
-        digitBuffer = '1';
+      if (e.key === '1' || e.key === '2') {
+        digitBuffer = e.key;
+        const fallback = parseInt(e.key, 10) - 1;
         digitTimer = setTimeout(() => {
           digitBuffer = '';
-          goTo(0);
+          goTo(fallback);
         }, 450);
         return;
       }
