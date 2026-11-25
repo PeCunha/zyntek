@@ -2,7 +2,7 @@ const TEAM_NAMES = [
   'Pedro Cunha',
   'Pedro da Motta',
   'Yasmin dos Santos',
-  'Oluchi Nicolly',
+  'Oluchi Nicoly',
   'Vinicius Borges',
   'Nathan Santana',
   'Luiggi Nobre'
