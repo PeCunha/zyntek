@@ -1,0 +1,700 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ReNova SENAI | Zyntek</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link
+    href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Montserrat:wght@500;600;700;800;900&display=swap"
+    rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+  <main class="presentation" id="presentation">
+
+    <canvas id="ambientCanvas" class="ambient-canvas"></canvas>
+    <div class="cursor-glow" id="cursorGlow"></div>
+
+    <header class="presentation-header" id="presentationHeader">
+      <div class="brand-minimal" id="headerBrand" role="button" tabindex="0" title="Voltar ao início da apresentação">
+        <div class="logo-badge">
+          <img src="logo(escura).png" alt="Logo Zyntek" class="logo-img-dark">
+        </div>
+        <div class="brand-info">
+          <span class="brand-wordmark">zyntek<span class="brand-dot">.</span></span>
+          <span class="brand-badge-sub">ReNova SENAI</span>
+        </div>
+      </div>
+
+      <nav class="slide-nav-track" id="slideNavTrack" aria-label="Navegação rápida pelos slides"></nav>
+
+      <div class="header-controls">
+        <div class="counter-pill">
+          <span class="counter-label">SLIDE</span>
+          <b id="current">01</b>
+          <span class="counter-divider">/</span>
+          <span class="counter-max" id="counterMax">20</span>
+        </div>
+        <button class="icon-btn" id="helpBtn" title="Atalhos do teclado (?)" aria-label="Atalhos do teclado">
+          <span>?</span>
+        </button>
+      </div>
+    </header>
+
+    <section class="slide active" data-index="0">
+      <div class="grid-bg"></div>
+      <div class="orb one"></div>
+      <div class="orb two"></div>
+
+      <div class="hero-art">
+        <div class="ring"></div>
+        <img src="logo(escura)_clean.png" alt="Logo Zyntek" class="company-hero-logo">
+      </div>
+
+      <div class="hero-title cover-copy">
+        <div class="eyebrow">ZYNTEK · APRESENTAÇÃO DA EMPRESA</div>
+        <h1>Tecnologia<br><span class="accent glow">com propósito.</span></h1>
+        <p class="hero-sub">Somos a Zyntek: soluções digitais que transformam processos complexos em experiências simples para quem ensina e para quem aprende.</p>
+
+        <div class="pill-row">
+          <span class="pill"><i></i>Inovação</span>
+          <span class="pill"><i></i>Soluções digitais</span>
+          <span class="pill"><i></i>Experiência do usuário</span>
+        </div>
+
+      </div>
+    </section>
+
+    <section class="slide" data-index="1">
+      <div class="grid-bg"></div>
+      <div class="orb one"></div>
+      <div class="orb two"></div>
+
+      <div class="hero-art">
+        <div class="ring"></div>
+        <div class="core"></div>
+        <i class="node n1"></i><i class="node n2"></i><i class="node n3"></i>
+        <span class="mini-label" style="right:2%;top:12%">INOVAÇÃO</span>
+        <span class="mini-label" style="right:68%;top:73%">TECNOLOGIA</span>
+      </div>
+
+      <div class="hero-title cover-copy">
+        <div class="eyebrow">ZYNTEK · TCC · ATO 1 — O PROBLEMA</div>
+        <h1>ReNova<br><span class="accent glow">SENAI.</span></h1>
+        <p class="hero-sub">Reformulação do Portal Acadêmico.</p>
+
+        <div class="cover-brand">
+          <img src="logo(escura).png" alt="Logo Zyntek" class="cover-logo">
+          <div>
+            <span class="brand-name">zyntek<span>.</span></span>
+            <p class="small cover-slogan">"Tecnologia além do esperado."</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="slide compact" data-index="2">
+      <div class="slide-head">
+        <div class="eyebrow">ATO 1 · PROBLEMÁTICA E OBJETIVOS</div>
+        <h2>Modernizar sem<br><span class="accent">perder a essência.</span></h2>
+        <p>Uma pergunta. Cinco prioridades.</p>
+      </div>
+
+      <div class="two-col">
+        <div class="card tilt-card">
+          <span class="panel-label">PROBLEMÁTICA</span>
+          <b>Como modernizar o portal sem comprometer regras e necessidades institucionais?</b>
+        </div>
+        <div class="card tilt-card">
+          <span class="panel-label">OBJETIVOS</span>
+          <div class="delivery-grid">
+            <div class="delivery-item"><span>G</span><b>Reformular o portal para os 4 perfis.</b></div>
+            <div class="delivery-item"><span>01</span><b>Identificar dificuldades reais.</b></div>
+            <div class="delivery-item"><span>02</span><b>Analisar processos existentes.</b></div>
+            <div class="delivery-item"><span>03</span><b>Simplificar a navegação.</b></div>
+            <div class="delivery-item"><span>04</span><b>Propor novas funções.</b></div>
+            <div class="delivery-item"><span>05</span><b>Materializar as melhorias.</b></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="slide compact" data-index="3">
+      <div class="slide-head">
+        <div class="eyebrow">ATO 1 · PÚBLICO-ALVO</div>
+        <h2>Quatro perfis.<br><span class="accent">Uma rotina conectada.</span></h2>
+        <p>Cada pessoa encontra o que precisa em poucos passos.</p>
+      </div>
+
+      <div class="cards persona-grid">
+        <div class="card tilt-card">
+          <div class="card-icon">◉</div>
+          <span class="persona-role">PERFIL 01</span>
+          <h3>Aluno</h3>
+          <p>Acompanhar notas e frequência.</p>
+          <div class="persona-need">Consulta rápida</div>
+        </div>
+        <div class="card tilt-card">
+          <div class="card-icon">▤</div>
+          <span class="persona-role">PERFIL 02</span>
+          <h3>Professor</h3>
+          <p>Realizar chamadas,<br>registrar conteúdos<br>e organizar avaliações.</p>
+          <div class="persona-need">Registro ágil</div>
+        </div>
+        <div class="card tilt-card">
+          <div class="card-icon">◈</div>
+          <span class="persona-role">PERFIL 03</span>
+          <h3>Coordenador</h3>
+          <p>Atuar na gestão acadêmica.</p>
+          <div class="persona-need">Visão consolidada</div>
+        </div>
+        <div class="card tilt-card">
+          <div class="card-icon">◎</div>
+          <span class="persona-role">PERFIL 04</span>
+          <h3>Orientador<br>Educacional</h3>
+          <p>Participar do acompanhamento dos estudantes.</p>
+          <div class="persona-need">Acompanhamento claro</div>
+        </div>
+      </div>
+    </section>
+
+    <section class="slide compact" data-index="4">
+      <div class="slide-head">
+        <div class="eyebrow">ATO 1 · 30 PARTICIPANTES · PESQUISAS</div>
+        <h2>O que as pesquisas<br><span class="accent">mostraram.</span></h2>
+        <p>30 participantes definiram as prioridades.</p>
+      </div>
+
+      <div class="chart-duo research-duo">
+        <div class="chart-card tilt-card">
+          <span class="panel-label">19 ALUNOS · BARRAS</span>
+          <div class="bar-stack">
+            <div class="result-bar">
+              <div class="result-bar-head"><b>94,7%</b><span>18/19</span></div>
+              <div class="result-bar-track"><i style="--pct:94.7%"></i></div>
+              <p>Deixaram de consultar por dificuldade.</p>
+            </div>
+            <div class="result-bar">
+              <div class="result-bar-head"><b>78,9%</b><span>15/19</span></div>
+              <div class="result-bar-track"><i style="--pct:78.9%"></i></div>
+              <p>Organização é prioridade.</p>
+            </div>
+            <div class="result-bar">
+              <div class="result-bar-head"><b>73,7%</b><span>14/19</span></div>
+              <div class="result-bar-track"><i style="--pct:73.7%"></i></div>
+              <p>Cliques desnecessários.</p>
+            </div>
+            <div class="result-bar">
+              <div class="result-bar-head"><b>57,9%</b><span>11/19</span></div>
+              <div class="result-bar-track"><i style="--pct:57.9%"></i></div>
+              <p>Visual ruim ou muito ruim.</p>
+            </div>
+          </div>
+          <p class="chart-takeaway">Organização e cliques travam o acesso.</p>
+        </div>
+        <div class="chart-card professor-card tilt-card">
+          <span class="panel-label">9 PROFESSORES · ROSCA</span>
+          <div class="professor-layout">
+            <div class="professor-chart">
+              <div class="donut research-donut" style="--pct:88.9%">
+                <span class="donut-core is-number">88,9%</span>
+              </div>
+              <b class="research-readout is-number">8/9 relataram problemas</b>
+              <p class="chart-note">1/9 sem problema.</p>
+            </div>
+            <div class="professor-queixas">
+              <p class="queixa-title">Principais queixas:</p>
+              <ul class="queixa-list">
+                <li>Interface desatualizada</li>
+                <li>Cliques em excesso</li>
+                <li>Retrabalho rotineiro</li>
+                <li>Frequência difícil</li>
+                <li>Conteúdo difícil de registrar</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="slide compact" data-index="5">
+      <div class="slide-head">
+        <div class="eyebrow">ATO 1 · DIAGNÓSTICO QUALITATIVO</div>
+        <h2>Diagnóstico com<br><span class="accent">coordenador e AQV.</span></h2>
+        <p>Dois olhares sobre o sistema atual.</p>
+      </div>
+
+      <div class="two-col diagnostic-duo">
+        <div class="card diagnostic-card tilt-card">
+          <span class="panel-label">COORDENADOR · 1 PARTICIPANTE</span>
+          <b class="diagnostic-count">2 aspectos criticados</b>
+          <ul class="diagnostic-list">
+            <li>Interface desatualizada</li>
+            <li>Baixa usabilidade do sistema</li>
+          </ul>
+        </div>
+        <div class="card diagnostic-card tilt-card">
+          <span class="panel-label">ORIENTADOR · 1 PARTICIPANTE (AQV)</span>
+          <b class="diagnostic-count">Levantamento exploratório</b>
+          <p>Sistema atual demonstrado para observação do seu funcionamento.</p>
+          <div class="diagnostic-note">Avaliação não registrada.</div>
+        </div>
+      </div>
+    </section>
+
+    <section class="slide compact" data-index="6">
+      <div class="slide-head">
+        <div class="eyebrow">ATO 1 · ENTREVISTAS E REQUISITOS</div>
+        <h2>Do relato<br>à <span class="accent">decisão.</span></h2>
+        <p>Relatos viraram critérios de projeto.</p>
+      </div>
+
+      <div class="requirement-flow">
+        <div class="req-row tilt-card">
+          <div class="req-who"><span class="card-icon">▤</span><b>Professor</b></div>
+          <div class="req-need">Diário e frequência</div>
+          <span class="flow-arrow">→</span>
+          <div class="req-decision">Rotina docente priorizada</div>
+        </div>
+        <div class="req-row tilt-card">
+          <div class="req-who"><span class="card-icon">◈</span><b>Coordenador</b></div>
+          <div class="req-need">Turmas e professores</div>
+          <span class="flow-arrow">→</span>
+          <div class="req-decision">Fluxos de gestão estruturados</div>
+        </div>
+        <div class="req-row tilt-card">
+          <div class="req-who"><span class="card-icon">◎</span><b>Orientador Educacional</b></div>
+          <div class="req-need">Acompanhamento inicial</div>
+          <span class="flow-arrow">→</span>
+          <div class="req-decision">Espaço dedicado à AQV</div>
+        </div>
+      </div>
+
+      <div class="slide-footnote">
+        <span class="pill">FUNCIONAIS · PERFIS, REGISTROS, TURMAS, ACOMPANHAMENTO</span>
+        <span class="pill">NÃO FUNCIONAIS · USABILIDADE, ACESSIBILIDADE, CONSISTÊNCIA</span>
+        <span class="pill">PRÓXIMO · PITCH EM VÍDEO</span>
+      </div>
+    </section>
+
+    <section class="slide compact" data-index="7">
+      <div class="eyebrow">ATO 2 · A SOLUÇÃO</div>
+      <div class="two-col solution-col">
+        <div>
+          <h2>ReNova<br><span class="accent">SENAI.</span></h2>
+          <p class="solution-quote">“A tecnologia precisa se adaptar às necessidades de quem a utiliza.”</p>
+          <div class="context-note">
+            <span class="panel-label">CONCEITO</span>
+            <b>Um portal reorganizado em torno da rotina de quem ensina e de quem aprende.</b>
+          </div>
+        </div>
+
+        <div class="capture-slot hero-capture tilt-card" data-capture="slide6Main">
+          <div class="capture-frame">
+            <div class="capture-mock">
+              <div class="capture-mock-top"><i></i><i></i><i></i><span>PORTAL · RENOVA SENAI</span></div>
+              <div class="capture-mock-body">
+                <div class="capture-mock-side"><b>Início</b><span>Notas</span><span>Frequência</span><span>Diário</span></div>
+                <div class="capture-mock-main">
+                  <div class="capture-mock-heading">Visão geral <span class="mock-cta">Acessar meu ambiente</span></div>
+                  <div class="mock-card"><b>Notas e frequência</b><span>Consulta direta</span></div>
+                  <div class="mock-card"><b>Diário de Classe</b><span>Rotina docente</span></div>
+                  <div class="mock-card"><b>Acompanhamento</b><span>Perfis conectados</span></div>
+                </div>
+              </div>
+            </div>
+            <img class="capture-img" alt="Captura principal do sistema ReNova SENAI" data-capture-img="slide6Main">
+          </div>
+          <span class="capture-label">[INSERIR CAPTURA PRINCIPAL DO SISTEMA]</span>
+        </div>
+      </div>
+    </section>
+
+    <section class="slide compact" data-index="8">
+      <div class="slide-head">
+        <div class="eyebrow">ATO 2 · FUNDAMENTAÇÃO TÉCNICA</div>
+        <h2>Simples hoje.<br><span class="accent">Pronto para evoluir.</span></h2>
+        <p>Stack atual, persistência e regras preservadas.</p>
+      </div>
+
+      <div class="stack-row">
+        <div class="stack-item"><b>HTML5</b><span>Estrutura</span></div>
+        <div class="stack-item"><b>CSS3</b><span>Visual</span></div>
+        <div class="stack-item"><b>JavaScript puro</b><span>Sem frameworks</span></div>
+        <div class="stack-item"><b>localStorage</b><span>Dados locais</span></div>
+      </div>
+
+      <div class="compare">
+        <div class="compare-panel tilt-card">
+          <span class="panel-label">VERSÃO DEMONSTRATIVA</span>
+          <b>Navegador + JS + localStorage</b>
+          <div class="tech-tags"><span>Sem servidor</span><span>Sem sincronização</span></div>
+        </div>
+        <div class="compare-arrow">→</div>
+        <div class="compare-panel tilt-card accent-panel">
+          <span class="panel-label">EVOLUÇÃO PARA PRODUÇÃO</span>
+          <b>Frontend + Backend + Banco de Dados</b>
+          <div class="tech-tags"><span>Autenticação</span><span>Permissões</span></div>
+        </div>
+      </div>
+
+      <div class="slide-footnote">
+        <span class="pill">REGRAS · FREQUÊNCIA, NOTAS 0–100 E PERÍODOS</span>
+        <span class="pill">PERFIS MÚLTIPLOS · SELEÇÃO DO PERFIL ATIVO</span>
+        <span class="pill">EVOLUÇÃO · APIs, BANCO E LOGIN SENAI</span>
+      </div>
+    </section>
+
+    <section class="slide compact print-showcase" data-index="9">
+      <div class="slide-head">
+        <div class="eyebrow">ATO 3 · DEMONSTRAÇÃO · LOGIN</div>
+        <h2>Tela de login</h2>
+        <p class="small">Acesso centralizado e seleção do perfil ativo.</p>
+      </div>
+
+      <div class="print-pair">
+        <div class="print-frame" data-print="funcao1a">
+          <img class="print-img" alt="Tela de login do portal" data-print-img="funcao1a">
+        </div>
+        <div class="print-frame" data-print="funcao1b">
+          <img class="print-img" alt="Tela de perfil do portal" data-print-img="funcao1b">
+        </div>
+      </div>
+    </section>
+
+    <section class="slide compact print-showcase" data-index="10">
+      <div class="slide-head">
+        <div class="eyebrow">ATO 3 · DEMONSTRAÇÃO · PROFESSOR</div>
+        <h2>Tela professor</h2>
+        <p class="small">Chamada com carâmetro, PTD/importação, notas 0–100 e média automática × atribuída.</p>
+        <p class="small">Subturmas, compensação abaixo de 75% e ocorrências acadêmicas.</p>
+      </div>
+
+      <div class="print-pair">
+        <div class="print-frame" data-print="telaProfessor">
+          <img class="print-img" alt="Tela principal do professor" data-print-img="telaProfessor">
+        </div>
+        <div class="print-frame video-frame" data-video-slot="videoProfessor">
+          <video class="print-video" data-video-src="videoProfessor" playsinline preload="metadata" aria-label="Vídeo demonstrativo da tela do professor"></video>
+          <span class="video-toggle" aria-hidden="true"></span>
+        </div>
+      </div>
+    </section>
+
+    <section class="slide compact print-showcase" data-index="11">
+      <div class="slide-head">
+        <div class="eyebrow">ATO 3 · DEMONSTRAÇÃO · ALUNO</div>
+        <h2>Tela Aluno</h2>
+        <p class="small">Frequência com ausências e histórico, comparativo de desempenho e boletim com download.</p>
+      </div>
+
+      <div class="print-pair">
+        <div class="print-frame" data-print="telaAluno">
+          <img class="print-img" alt="Tela principal do aluno" data-print-img="telaAluno">
+        </div>
+        <div class="print-frame video-frame" data-video-slot="videoAluno">
+          <video class="print-video" data-video-src="videoAluno" playsinline preload="metadata" aria-label="Vídeo demonstrativo da tela do aluno"></video>
+          <span class="video-toggle" aria-hidden="true"></span>
+        </div>
+      </div>
+    </section>
+
+    <section class="slide compact print-showcase" data-index="12">
+      <div class="slide-head">
+        <div class="eyebrow">ATO 3 · DEMONSTRAÇÃO · COORDENADOR</div>
+        <h2>Tela Coordenador</h2>
+        <p class="small">Criação de turmas, atribuição de professores e organização das unidades curriculares.</p>
+      </div>
+
+      <div class="print-pair">
+        <div class="print-frame" data-print="telaCoordenador">
+          <img class="print-img" alt="Tela principal do coordenador" data-print-img="telaCoordenador">
+        </div>
+        <div class="print-frame video-frame" data-video-slot="videoCoordenador">
+          <video class="print-video" data-video-src="videoCoordenador" playsinline preload="metadata" aria-label="Vídeo demonstrativo da tela do coordenador"></video>
+          <span class="video-toggle" aria-hidden="true"></span>
+        </div>
+      </div>
+    </section>
+
+    <section class="slide compact print-showcase" data-index="13">
+      <div class="slide-head">
+        <div class="eyebrow">ATO 3 · DEMONSTRAÇÃO · ORIENTADOR (AQV)</div>
+        <h2>Tela orientador (AQV)</h2>
+        <p class="small">Registros relevantes e situações acadêmicas que demandam atenção.</p>
+      </div>
+
+      <div class="print-pair">
+        <div class="print-frame" data-print="telaOrientador">
+          <img class="print-img" alt="Tela principal do orientador (AQV)" data-print-img="telaOrientador">
+        </div>
+        <div class="print-frame video-frame" data-video-slot="videoOrientador">
+          <video class="print-video" data-video-src="videoOrientador" playsinline preload="metadata" aria-label="Vídeo demonstrativo da tela do orientador educacional"></video>
+          <span class="video-toggle" aria-hidden="true"></span>
+        </div>
+      </div>
+    </section>
+
+    <section class="slide compact" data-index="14">
+      <div class="slide-head">
+        <div class="eyebrow">ATO 3 · INTEGRAÇÃO DOS PERFIS</div>
+        <h2>Um registro.<br><span class="accent">Quatro ambientes.</span></h2>
+        <p>Um registro conecta quatro rotinas.</p>
+      </div>
+
+      <div class="requirement-flow">
+        <div class="req-row tilt-card">
+          <div class="req-who"><span class="card-icon">▤</span><b>Professor</b></div>
+          <div class="req-need">Frequência, notas e conteúdo.</div>
+          <span class="flow-arrow">→</span>
+          <div class="req-decision">Aluno vê notas e boletim.</div>
+        </div>
+        <div class="req-row tilt-card">
+          <div class="req-who"><span class="card-icon">◈</span><b>Coordenação</b></div>
+          <div class="req-need">Turmas e professores.</div>
+          <span class="flow-arrow">→</span>
+          <div class="req-decision">Gestão consolidada.</div>
+        </div>
+        <div class="req-row tilt-card">
+          <div class="req-who"><span class="card-icon">◎</span><b>Orientação Educacional</b></div>
+          <div class="req-need">Registros e atenção.</div>
+          <span class="flow-arrow">→</span>
+          <div class="req-decision">Acompanhamento dedicado.</div>
+        </div>
+      </div>
+
+      <div class="slide-footnote"><span class="pill">MESMO SISTEMA · SETORES CONECTADOS</span></div>
+    </section>
+
+    <section class="slide compact" data-index="15">
+      <div class="eyebrow">ATO 4 · RESULTADOS E BENEFÍCIOS</div>
+      <h2>O que muda<br><span class="accent">na rotina.</span></h2>
+
+      <div class="two-col">
+        <div>
+          <span class="panel-label">RESULTADOS DA PLATAFORMA</span>
+          <div class="delivery-grid">
+            <div class="delivery-item"><span>01</span><b>4 perfis em um sistema.</b></div>
+            <div class="delivery-item"><span>02</span><b>Notas e frequência diretas.</b></div>
+            <div class="delivery-item"><span>03</span><b>Menos etapas no Diário de Classe.</b></div>
+            <div class="delivery-item"><span>04</span><b>Pesquisa e entrevistas validadas.</b></div>
+          </div>
+        </div>
+
+        <div>
+          <span class="panel-label">SEGURANÇA E PERMISSÕES</span>
+          <div class="delivery-grid">
+            <div class="delivery-item"><span>01</span><b>Acesso por perfil.</b></div>
+            <div class="delivery-item"><span>02</span><b>Permissões por papel.</b></div>
+            <div class="delivery-item"><span>03</span><b>Backend centralizado na evolução.</b></div>
+            <div class="delivery-item"><span>04</span><b>LGPD a validar na produção.</b></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="slide" data-index="16">
+      <div class="eyebrow">ATO 4 · PROPOSTA COMERCIAL</div>
+      <h2>Proposta comercial<br>para o <span class="accent">SENAI.</span></h2>
+      <div class="budget-box tilt-card" style="margin-top:28px">
+        <div class="budget-icon">◇</div>
+        <div>
+          <span class="panel-label">INVESTIMENTO DE IMPLANTAÇÃO</span>
+          <div class="big-number" id="budgetCounter" data-target="80000">R$ 80.000</div>
+          <p>Implantação, personalização, integração, testes e treinamento dos usuários.</p>
+          <div class="budget-monthly">
+            <span>MENSALIDADE</span>
+            <b>R$ 8.000/mês</b>
+          </div>
+          <p class="small">Infraestrutura, manutenção, suporte e melhorias contínuas.</p>
+        </div>
+      </div>
+      <div class="slide-footnote">
+        <span class="pill">COMPOSIÇÃO · PROFISSIONAIS, CUSTOS OPERACIONAIS, ENCARGOS E SUSTENTABILIDADE</span>
+        <span class="pill">EXPANSÃO · OUTRAS UNIDADES DO SENAI</span>
+      </div>
+    </section>
+
+    <section class="slide compact" data-index="17">
+      <div class="eyebrow">ATO 4 · EVOLUÇÃO CONTÍNUA</div>
+      <h2>Evolução<br><span class="accent">contínua.</span></h2>
+
+      <div class="two-col">
+        <div>
+          <span class="panel-label">MODELO DE EVOLUÇÃO</span>
+          <div class="delivery-grid">
+            <div class="delivery-item"><span>01</span><b>APIs e banco centralizado.</b></div>
+            <div class="delivery-item"><span>02</span><b>Autenticação SENAI.</b></div>
+            <div class="delivery-item"><span>03</span><b>Expansão para outras unidades.</b></div>
+            <div class="delivery-item"><span>04</span><b>Segurança contínua.</b></div>
+          </div>
+          <div class="tech-tags"><span>Sem servidor hoje</span><span>Cliente-servidor na produção</span></div>
+        </div>
+
+        <div class="roadmap">
+          <span class="panel-label">ROADMAP · 3 PRIORIDADES</span>
+          <div class="roadmap-item"><strong>01 · Infraestrutura</strong>
+            <p>Dados e segurança centralizados.</p>
+          </div>
+          <div class="roadmap-item"><strong>02 · Módulos</strong>
+            <p>Coordenação e AQV completas.</p>
+          </div>
+          <div class="roadmap-item"><strong>03 · Validação</strong>
+            <p>Testes com mais usuários.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="slide compact" data-index="18">
+      <div class="eyebrow">ATO 4 · CONCLUSÃO</div>
+      <h2>Mais do que<br><span class="accent">um portal.</span></h2>
+
+      <div class="two-col">
+        <div>
+          <span class="panel-label">O QUE BUSCAMOS</span>
+          <div class="delivery-grid">
+            <div class="delivery-item"><span>01</span><b>Acesso fácil à informação.</b></div>
+            <div class="delivery-item"><span>02</span><b>Processos mais simples.</b></div>
+            <div class="delivery-item"><span>03</span><b>Análise, código, UX, regras e negócio.</b></div>
+          </div>
+        </div>
+
+        <div class="card tilt-card">
+          <span class="panel-label">MENSAGEM FINAL</span>
+          <b>“Mais do que modernizar a aparência, repensamos como a tecnologia ajuda o ensino.”</b>
+          <p class="small">“Somos a Zyntek. Tecnologia além do esperado.”</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="slide" data-index="19">
+      <div class="grid-bg"></div>
+      <div class="orb one"></div>
+      <div class="closing-mark">Z.</div>
+
+      <div class="closing-content">
+        <div class="eyebrow">ZYNTEK · ENCERRAMENTO</div>
+        <h1>ReNova<br><span class="accent glow">SENAI.</span></h1>
+
+        <div class="closing-brand-badge">
+          <div class="closing-logo-wrap">
+            <img src="logo(escura).png" alt="Logo Zyntek" class="closing-logo-img">
+          </div>
+          <div>
+            <span class="brand-name">zyntek<span>.</span></span>
+            <p class="small closing-slogan">"Tecnologia além do esperado."</p>
+          </div>
+        </div>
+
+        <div class="cover-team closing-team">
+          <span class="panel-label">EQUIPE · 7 INTEGRANTES</span>
+          <div class="cover-team-list" id="closingTeamList"></div>
+        </div>
+
+      </div>
+    </section>
+
+    <footer class="presentation-footer" id="presentationFooter">
+      <div class="footer-section">
+        <span class="status-pulse"></span>
+        <span id="sectionName" class="section-title">ZYNTEK · A EMPRESA</span>
+      </div>
+
+      <div class="footer-center-hint">
+        <span class="hint-key">←</span>
+        <span class="hint-key">→</span>
+        <span class="hint-text">Navegar · N = cola de palco</span>
+      </div>
+
+      <div class="footer-actions">
+        <div class="nav-cluster">
+          <button id="prev" class="control-btn" aria-label="Slide anterior" title="Slide anterior (←)">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+              <polyline points="15 18 9 12 15 6"></polyline>
+            </svg>
+          </button>
+          <button id="next" class="control-btn" aria-label="Próximo slide" title="Próximo slide (→)">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+              <polyline points="9 18 15 12 9 6"></polyline>
+            </svg>
+          </button>
+          <button id="full" class="control-btn" aria-label="Tela cheia" title="Tela cheia (F)">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+              <path d="M8 3H5a2 2 0 0 0-2 2v3m18 0V5a2 2 0 0 0-2-2h-3m0 18h3a2 2 0 0 0 2-2v-3M3 16v3a2 2 0 0 0 2 2h3">
+              </path>
+            </svg>
+          </button>
+        </div>
+      </div>
+    </footer>
+
+    <div class="progress" id="progressContainer"><span id="progressBar"></span></div>
+
+    <aside class="stage-notes" id="stageNotes" aria-hidden="true">
+      <div class="stage-notes-head">
+        <span class="stage-kicker">COLA DE PALCO</span>
+        <span class="stage-key">N</span>
+      </div>
+      <div class="stage-slide" id="stageSlide">SLIDE 01 · ZYNTEK — A EMPRESA</div>
+      <div class="stage-grid">
+        <div><span>ATO</span><b id="stageAct">Ato 1 — O Problema</b></div>
+        <div><span>INTEGRANTE</span><b id="stageMember">Integrante 1</b></div>
+        <div><span>TEMPO</span><b id="stageTime">00:00–00:45</b></div>
+      </div>
+      <div class="stage-cue"><span>DEIXA DE TRANSIÇÃO</span><p id="stageCue">Apresentar a Zyntek antes de entrar no projeto.</p></div>
+      <div class="stage-hint">N para ocultar · Esc fecha</div>
+    </aside>
+
+    <div class="shortcuts-modal" id="shortcutsModal" aria-hidden="true">
+      <div class="shortcuts-backdrop" id="shortcutsBackdrop"></div>
+      <div class="shortcuts-dialog">
+        <div class="shortcuts-header">
+          <div class="modal-title">
+            <span class="modal-icon">⌨</span>
+            <h3>Atalhos de Navegação</h3>
+          </div>
+          <button class="modal-close" id="closeShortcutsBtn" aria-label="Fechar">✕</button>
+        </div>
+        <div class="shortcuts-grid">
+          <div class="shortcut-item">
+            <div class="key-combo"><kbd>→</kbd> <kbd>Espaço</kbd> <kbd>PgDn</kbd></div>
+            <span>Próximo slide</span>
+          </div>
+          <div class="shortcut-item">
+            <div class="key-combo"><kbd>←</kbd> <kbd>PgUp</kbd></div>
+            <span>Slide anterior</span>
+          </div>
+          <div class="shortcut-item">
+            <div class="key-combo"><kbd>N</kbd></div>
+            <span>Mostrar / ocultar cola de palco</span>
+          </div>
+          <div class="shortcut-item">
+            <div class="key-combo"><kbd>F</kbd></div>
+            <span>Tela cheia</span>
+          </div>
+          <div class="shortcut-item">
+            <div class="key-combo"><kbd>Home</kbd> / <kbd>End</kbd></div>
+            <span>Primeiro / Último slide</span>
+          </div>
+          <div class="shortcut-item">
+            <div class="key-combo"><kbd>1</kbd>–<kbd>9</kbd> · <kbd>1+0</kbd>–<kbd>1+9</kbd></div>
+            <span>Ir aos slides 1 a 20</span>
+          </div>
+          <div class="shortcut-item">
+            <div class="key-combo"><kbd>?</kbd></div>
+            <span>Abrir esta ajuda</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </main>
+
+  <script src="script.js" defer></script>
+</body>
+
+</html>
