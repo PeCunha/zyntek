@@ -13,10 +13,6 @@ const RESEARCH = {
   dado2: null
 };
 
-const CAPTURES = {
-  slide6Main: 'imagens/tela-demonstrativa.png'
-};
-
 const PRINTS = {
   funcao1a: 'imagens/telalogin.jpeg',
   funcao1b: 'imagens/telaperfil.jpeg',
@@ -28,6 +24,7 @@ const PRINTS = {
 };
 
 const VIDEOS = {
+  videoPitch: 'imagens/pitch.mp4',
   videoAtual: 'imagens/aluno-atualmente.mp4',
   videoProfessor: 'imagens/tela-professor.mp4',
   videoAluno: 'imagens/tela-aluno.mp4',
@@ -350,39 +347,6 @@ document.addEventListener('DOMContentLoaded', () => {
     budgetFrame = requestAnimationFrame(frame);
   }
 
-  function setupCaptures() {
-    Object.keys(CAPTURES).forEach((key) => {
-      const slot = document.querySelector(`[data-capture="${key}"]`);
-      const img = document.querySelector(`[data-capture-img="${key}"]`);
-      if (!slot || !img) return;
-
-      const label = slot.querySelector('.capture-label');
-      if (label) label.dataset.placeholder = label.textContent;
-
-      const path = CAPTURES[key];
-      if (!path) {
-        slot.classList.remove('has-capture');
-        return;
-      }
-
-      const showCapture = () => {
-        slot.classList.add('has-capture');
-        if (label) label.textContent = 'CAPTURA VINCULADA';
-      };
-
-      const hideCapture = () => {
-        slot.classList.remove('has-capture');
-        if (label) label.textContent = label.dataset.placeholder;
-      };
-
-      img.addEventListener('load', showCapture);
-      img.addEventListener('error', hideCapture);
-      img.src = path;
-
-      if (img.complete && img.naturalWidth > 0) showCapture();
-    });
-  }
-
   function setupPrints() {
     Object.keys(PRINTS).forEach((key) => {
       const frame = document.querySelector(`[data-print="${key}"]`);
@@ -430,8 +394,8 @@ document.addEventListener('DOMContentLoaded', () => {
       video.preload = 'metadata';
 
       frame.setAttribute('tabindex', '0');
-      frame.setAttribute('role', 'button');
-      frame.setAttribute('aria-label', 'Pausar ou retomar vídeo');
+      frame.setAttribute('role', 'group');
+      frame.setAttribute('aria-label', 'Vídeo com controle de tela cheia');
 
       const toggle = () => {
         if (video.paused) playVideo(video, frame);
@@ -441,13 +405,41 @@ document.addEventListener('DOMContentLoaded', () => {
         }
       };
 
-      frame.addEventListener('click', toggle);
+      frame.addEventListener('click', (e) => {
+        if (video.controls || e.target.closest?.('button')) return;
+        toggle();
+      });
       frame.addEventListener('keydown', (e) => {
+        if (video.controls || e.target.closest?.('button')) return;
         if (e.key === 'Enter' || e.key === ' ') {
           e.preventDefault();
           toggle();
         }
       });
+
+      const fullscreenBtn = document.createElement('button');
+      fullscreenBtn.type = 'button';
+      fullscreenBtn.className = 'control-btn video-fullscreen-btn';
+      fullscreenBtn.innerHTML = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M8 3H5a2 2 0 0 0-2 2v3m18 0V5a2 2 0 0 0-2-2h-3m0 18h3a2 2 0 0 0 2-2v-3M3 16v3a2 2 0 0 0 2 2h3"></path></svg>';
+      frame.appendChild(fullscreenBtn);
+
+      const syncFullscreenBtn = () => {
+        const isFullscreen = document.fullscreenElement === frame;
+        video.controls = isFullscreen;
+        fullscreenBtn.setAttribute('aria-label', isFullscreen ? 'Sair da tela cheia' : 'Assistir ao vídeo em tela cheia');
+        fullscreenBtn.title = isFullscreen ? 'Sair da tela cheia (Esc)' : 'Assistir em tela cheia';
+      };
+
+      fullscreenBtn.addEventListener('click', (e) => {
+        e.stopPropagation();
+        if (document.fullscreenElement === frame) {
+          document.exitFullscreen?.().catch(() => {});
+        } else {
+          frame.requestFullscreen?.().catch(() => {});
+        }
+      });
+      document.addEventListener('fullscreenchange', syncFullscreenBtn);
+      syncFullscreenBtn();
 
       video.addEventListener('play', () => frame.classList.remove('is-paused'));
       video.addEventListener('pause', () => frame.classList.add('is-paused'));
@@ -761,7 +753,6 @@ document.addEventListener('DOMContentLoaded', () => {
     animateParticles();
   }
 
-  setupCaptures();
   setupPrints();
   setupVideos();
   update();
